@@ -1,0 +1,38 @@
+.Logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .logo1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 152px;
+    height: 117px;
+    .imgLogo {
+      width: 152px;
+      height: 117px;
+      animation: resize 1s alternate infinite;
+    }
+  }
+
+  span {
+    color: #4865ef;
+    text-align: center;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 4px;
+  }
+  @keyframes resize {
+    0% {
+      width: 145px;
+      height: 110px;
+    }
+    100% {
+      width: 152px;
+      height: 117px;
+    }
+  }
+}

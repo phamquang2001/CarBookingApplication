@@ -1,0 +1,155 @@
+@import './src/app/styles/variables.scss';
+.container-log-in {
+  width: 80%;
+}
+.input-phone-number {
+  padding: 10px;
+  //   border-radius: 10%;
+  border-radius: 12px;
+  width: 100%;
+  background: $grey-05;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+  input {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+.title-log-in {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  span:first-child {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  span:last-child {
+    width: 80%;
+    color: rgba(0, 0, 0, 0.96);
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.input-password {
+  padding: 10px;
+  //   border-radius: 10%;
+  width: 100%;
+  border-radius: 12px;
+  background: $grey-05;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+  input {
+    width: 100%;
+    background: $grey-05;
+    border: 1px solid var(--react-international-phone-border-color, gainsboro);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+    border-radius: var(--react-international-phone-border-radius, 4px);
+    height: var(--react-international-phone-height, 36px);
+    font-size: var(--react-international-phone-font-size, 16px);
+    color: var(--react-international-phone-text-color, #222);
+    font-family: inherit;
+    outline: none;
+  }
+}
+.input-password {
+  position: relative;
+  .eyes {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+}
+.submit-log-in {
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+  background-color: $loading-color-5;
+  width: 100%;
+  margin: 30px 0;
+  span {
+    color: $color-white;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+}
+.line {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  &:before,
+  &:after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid #000; /* Điều chỉnh màu và chiều rộng của dấu gạch ngang */
+    margin: 0 10px; /* Khoảng cách giữa dấu gạch ngang và văn bản */
+  }
+}
+.item-log-in {
+  padding: 10px;
+  //   border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  width: 100%;
+  background: $grey-05;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    svg {
+      width: 32px !important;
+      height: 32px !important;
+    }
+    span {
+      color: #000;
+      text-align: center;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
+
+.item-sign-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px 0;
+  span {
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  a {
+    text-decoration: none;
+    color: #5470f2;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 2px;
+  }
+}

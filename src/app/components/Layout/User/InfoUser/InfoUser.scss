@@ -1,0 +1,100 @@
+.InfoUser {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  .container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+      .name-user {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      .image-user {
+        img {
+          border-radius: 50%;
+          width: 100px;
+          height: 100px;
+          border: 2px solid #5470f2;
+        }
+      }
+      .phone-number-user {
+        color: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .user-donated {
+        color: #5470f2;
+        text-align: center;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+    .setting {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .account-setting {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 20px;
+      max-height: 500px;
+      overflow: auto;
+      .item-setting {
+        display: flex;
+        align-items: center;
+        padding: 0px 10px;
+        background-color: #f0f4f8;
+        border-radius: 20px;
+        cursor: pointer;
+        gap: 40px;
+        svg {
+          width: 36px;
+          height: 36px;
+        }
+        .content-setting {
+          h2 {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+          p {
+            color: rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+        .forward-setting {
+          background-color: #f0f4f8;
+          position: absolute;
+          right: 20px;
+        }
+      }
+    }
+  }
+}

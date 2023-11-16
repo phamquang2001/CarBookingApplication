@@ -1,0 +1,95 @@
+.pending-booking {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    height: 100%;
+    // justify-content: center;
+    .title {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      // margin-bottom: 20px;
+    }
+    img {
+      width: 75px;
+      height: 75px;
+      border-radius: 75px;
+      border: 1px solid #5470f2;
+    }
+    .info-driver {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+      color: #000;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      h2 {
+        margin-block-start: 0.23em;
+        margin-block-end: 0.23em;
+        font-weight: 600;
+      }
+      span {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+    .icon-status-booking {
+      width: 150px !important;
+      height: 131px !important;
+    }
+    .status-booking {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      span {
+        color: #5470f2;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+    
+  }
+}
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

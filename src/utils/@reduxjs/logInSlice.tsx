@@ -32,8 +32,8 @@ const logInSlice = createSlice({
       .addCase(fetchAPILogin.fulfilled, (state, action: any) => {
         // state.account.access_token = action.payload.access_token;
         // state.account.refresh_token = action.payload.refresh_token;
-        saveRefreshToken(action.payload.refresh_token);
-        saveToken(action.payload.access_token);
+        saveRefreshToken(action.payload.refreshToken);
+        saveToken(action.payload.accessToken);
         state.authenticated = true;
       })
       .addCase(fetchAPILogin.rejected, (state, action: any) => {
@@ -47,8 +47,9 @@ export const fetchAPILogin = createAsyncThunk(
   'log-in/fetch',
   async (data: dataLogin, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.post(`${authApi}/auth/signin`, data.payload);
+      const response = await axiosClient.post(`${authApi}/api/v2/users/login`, data.payload);
       data.onLoginSuccess();
+      console.log(response.data)
       return response.data;
     } catch (error: any) {
       data.onLoginFailed();

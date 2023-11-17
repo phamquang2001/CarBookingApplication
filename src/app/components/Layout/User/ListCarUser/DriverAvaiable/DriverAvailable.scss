@@ -29,11 +29,12 @@
   .list-driver {
     display: flex;
     flex-direction: column;
+    padding-inline-start: 0px;
     gap: 20px;
     .driver {
       align-items: center;
       display: flex;
-      width: 95%;
+      margin: 0 20px;
       //   justify-content: center;
       border: 1px solid black;
       border-radius: 12px;
@@ -73,8 +74,8 @@
         flex-direction: column;
         gap: 20px;
         text-align: center;
-        position: absolute;
-        right: 20px;
+        margin-left: auto;
+        right: 10px;
         span {
           color: #000;
           text-align: center;

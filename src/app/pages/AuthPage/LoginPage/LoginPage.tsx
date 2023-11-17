@@ -22,8 +22,9 @@ const LoginPage: React.FC = () => {
   // const status = useSelector(getAccountStatus);
   const dispatch = useDispatch();
   const history = useHistory();
+
   let data = {
-    username: phone,
+    username: phone.replace(/^\+84/, '0'),
     password: password,
   };
 

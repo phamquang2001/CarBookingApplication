@@ -1,6 +1,7 @@
 :root {
   /* apply to global Html document */
   --clr: #4f5053;
+  
 }
 
 .navigation {
@@ -33,7 +34,7 @@
   display: flex;
   align-items: center;
 }
-.navigation ul li  a{
+.navigation ul li a {
   display: flex;
   justify-content: center;
   align-items: center;

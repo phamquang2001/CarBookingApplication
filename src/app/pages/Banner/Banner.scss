@@ -37,7 +37,6 @@
         object-fit: cover;
       }
       .btn-use-location {
-        width: 50%;
         margin: 35px 0px;
         padding: 14px 53px;
         border-radius: 10px;
@@ -47,6 +46,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          width: 100%;
           gap: 20px;
           color: #5470f2;
           text-align: center;

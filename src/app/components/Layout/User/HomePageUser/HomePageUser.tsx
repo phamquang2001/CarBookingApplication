@@ -20,10 +20,10 @@ const HomePageUser: React.FC = () => {
   }
   const [coords, setCoords] = useState<Coords | null>(null);
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(({ coords: { longitude, latitude } }) => {
+    navigator?.geolocation?.getCurrentPosition(({ coords: { longitude, latitude } }) => {
       setCoords({ lat: latitude, lng: longitude });
     });
-  }, []);
+  });
   return (
     <div className="HomePageUser">
       <div className=" your-location">

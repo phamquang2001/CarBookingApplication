@@ -19,9 +19,6 @@ function DriverAvaiable(props: any) {
     <div className="drivers">
       <div className="title">
         {' '}
-        {/* <button onClick={() => dispatch(setPopUpDriverOff())} className="btn-close-pop-up">
-          Close
-        </button> */}
         Avaiable Drivers
       </div>
       <ul className="list-driver">

@@ -5,8 +5,9 @@
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 768px;
-  border: 1px solid $color-black900;
+  width: 100%;
+  // max-width: 768px;
+  // border: 1px solid $color-black900;
   button {
     cursor: pointer;
     border: none;

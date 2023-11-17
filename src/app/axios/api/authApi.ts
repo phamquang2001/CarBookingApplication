@@ -1,3 +1,3 @@
-const authApi = 'http://192.168.68.75:6020';
+const authApi = 'https://trankhai-srsquanlyxe.up.railway.app';
 
 export default authApi;

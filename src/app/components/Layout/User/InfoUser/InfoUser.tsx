@@ -13,7 +13,7 @@ const InfoUser: React.FC = () => {
   return (
     <div className="InfoUser">
       <h2 className="title">Your Profile</h2>
-      <div className="container">
+      <div className="container-info-user">
         <div className="profile">
           <div className="image-user">
             <img alt="" src="/map.png"></img>

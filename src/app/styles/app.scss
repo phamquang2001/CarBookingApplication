@@ -1,0 +1,28 @@
+.css-1rv8zyt-MuiStack-root {
+  overflow: hidden !important;
+}
+.css-e784if-MuiTypography-root {
+  margin: 0;
+  font-family: Nunito !important;
+  font-size: 1rem !important;
+  line-height: 1.2 !important;
+}
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+  padding: 5px !important;
+}
+
+.title {
+  // position: sticky;
+  // top: 0;
+  // z-index: 10;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  width: 100%;
+  padding: 20px;
+  font-weight: 700;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: var(--Primary, #047d30);
+}

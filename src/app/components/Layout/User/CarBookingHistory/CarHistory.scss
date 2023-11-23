@@ -1,0 +1,41 @@
+.CarHistory {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+  padding-bottom: 30px;
+  .container-history {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    width: 100%;
+    .status-booking-car {
+      display: flex;
+      width: 90%;
+      flex-direction: row;
+      justify-content: center;
+      padding-bottom: 20px;
+      gap: 10px;
+      .btn-status {
+        display: flex;
+        padding: 16px 24px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        border-radius: 38px;
+        color: #fff;
+        background: var(--Primary, rgb(74, 125, 146));
+        &:hover {
+          color: #000;
+          background: var(--Primary, #11bd59);
+        }
+      }
+      .active {
+        background-color: #11bd59;
+        color: #fff;
+      }
+    }
+  }
+}

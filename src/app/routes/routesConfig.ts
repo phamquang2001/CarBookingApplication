@@ -30,7 +30,7 @@ export const Epath = {
   homePageSecond: '/homePage/car',
 
   // HomePage/Home
-  homePageThird: '/homePage/donate',
+  homePageThird: '/homePage/history',
 
   // HomePage/Home
   homePageFour: '/homePage/info',

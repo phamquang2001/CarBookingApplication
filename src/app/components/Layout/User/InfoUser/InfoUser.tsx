@@ -1,30 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import './InfoUser.scss';
-import { removeToken, removeRefreshToken } from 'app/helpers/localStorage';
+import {
+  removeToken,
+  removeRefreshToken,
+  getUserFromLocalStorage,
+  removeUser,
+  saveUser,
+} from 'app/helpers/localStorage';
 import { useHistory } from 'react-router-dom';
 import { Epath } from 'app/routes/routesConfig';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+import { getAPIUser } from 'app/API/api';
+
 const InfoUser: React.FC = () => {
+  const [showProfile, setShowProfile] = useState(false);
   const history = useHistory();
+  const data_user_local: any = getUserFromLocalStorage();
+  const [dataUser, setDataUser] = useState(data_user_local);
   const handleLogout = () => {
     history.push(Epath.loginPage);
     removeToken();
     removeRefreshToken();
+    removeUser();
   };
+  useEffect(() => {
+    fetch_data();
+  }, [dataUser.fullname, dataUser.avatar]);
+  const fetch_data = async () => {
+    try {
+      const userResponse: any = await getAPIUser(data_user_local.id_user);
+      setDataUser(userResponse.data);
+      saveUser(userResponse.data);
+    } catch (error) {
+      console.log('Error fetching user data:', error);
+    }
+  };
+  console.log(data_user_local);
   return (
     <div className="InfoUser">
-      <h2 className="title">Your Profile</h2>
+      {/* <div className="title">Your Profile</div> */}
       <div className="container-info-user">
         <div className="profile">
           <div className="image-user">
-            <img alt="" src="/map.png"></img>
+            <img alt="" src={data_user_local?.avatar}></img>
           </div>
-          <span className="name-user ">Kyle Renz</span>
-          <span className="phone-number-user">+49 123 456 7890</span>
-          <span className="user-donated">$16.15 Donated</span>
+          <span className="name-user ">{data_user_local?.fullname}</span>
+          <span className="phone-number-user">{data_user_local?.username}</span>
         </div>
         <h2 className="setting">Account Settings</h2>
         <div className="account-setting">
-          <div className="item-setting">
+          {/* //Profile */}
+          <div onClick={() => setShowProfile(true)} className="item-setting">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="36"
@@ -53,22 +79,38 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
-          <div className="item-setting">
+          <div
+            onClick={() => {
+              history.push(Epath.homePageThird);
+            }}
+            className="item-setting"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="36"
@@ -89,18 +131,29 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
@@ -126,18 +179,29 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
@@ -162,18 +226,29 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
@@ -201,18 +276,29 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
@@ -237,18 +323,29 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
@@ -283,23 +380,41 @@ const InfoUser: React.FC = () => {
             <button className="forward-setting">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="11"
+                width="20"
                 height="18"
-                viewBox="0 0 11 18"
+                viewBox="0 0 20 18"
                 fill="none"
               >
-                <path
-                  d="M1 1.5L9 9L1 16.5"
-                  stroke="black"
-                  stroke-opacity="0.3"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
+                <g id="Group">
+                  <path
+                    id="Vector"
+                    d="M3.32312 16.8781L17.7521 10.1791C18.7501 9.71605 18.7501 8.28205 17.7521 7.81905L3.32312 1.12205C2.28812 0.642051 1.19312 1.66005 1.58012 2.74305L3.81312 8.99705L1.58012 15.2581C1.19312 16.3401 2.28812 17.3581 3.32312 16.8781V16.8781Z"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    id="Vector_2"
+                    d="M3.81006 9H18.5001"
+                    stroke="#047D30"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
               </svg>
             </button>
           </div>
         </div>
       </div>
+      {showProfile && (
+        <ProfileInfo
+          data_user_local={dataUser}
+          setDataUser={setDataUser}
+          setShowProfile={setShowProfile}
+        />
+      )}
     </div>
   );
 };

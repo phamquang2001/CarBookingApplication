@@ -3,10 +3,11 @@
  */
 
 import { combineReducers } from '@reduxjs/toolkit';
+import detailBookSlice from 'utils/@reduxjs/detailBookSlice';
+import historyBookSlice from 'utils/@reduxjs/historyBookSlice';
 import listCarSlice from 'utils/@reduxjs/listCarSlice';
 import logInSlice from 'utils/@reduxjs/logInSlice';
 import popUpSlice from 'utils/@reduxjs/popUpSlice';
-
 import { InjectedReducersType } from 'utils/types/injector-typings';
 
 /**
@@ -16,6 +17,8 @@ export const rootReducers = {
   auth: logInSlice,
   popUp: popUpSlice,
   listCar: listCarSlice,
+  historyBook: historyBookSlice,
+  detailBook: detailBookSlice,
 };
 
 export function createReducer(injectedReducers: InjectedReducersType = {}) {

@@ -4,7 +4,6 @@ import { RootStateKeyType } from '../types/injector-typings';
 const initialState = {
   isPopUpOn: false,
   isPopUpDriverOn: false,
-  isDisplay: 'DriverAvailable',
 };
 
 const popUpSlice = createSlice({
@@ -23,19 +22,11 @@ const popUpSlice = createSlice({
       state.isPopUpOn = false;
     },
     setPopUpDriverOff: (state) => {
-      state.isDisplay = '';
       state.isPopUpDriverOn = false;
-    },
-    setDisplay: (state, action) => {
-      state.isPopUpOn = false;
-      state.isDisplay = action.payload;
     },
   },
 });
-export const { setPopUpOn, setPopUpOff, setPopUpDriverOn, setPopUpDriverOff, setDisplay } =
-  popUpSlice.actions;
+export const { setPopUpOn, setPopUpOff, setPopUpDriverOn, setPopUpDriverOff } = popUpSlice.actions;
 export const getPopUpStatus = (state: any) => state.popUp.isPopUpOn;
-export const getPopUpDriverStatus = (state: any) => state.popUp.isPopUpDriverOn;
-export const getDisplayStatus = (state: any) => state.popUp.isDisplay;
 
 export default popUpSlice.reducer;

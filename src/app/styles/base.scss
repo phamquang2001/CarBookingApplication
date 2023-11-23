@@ -11,6 +11,10 @@
 }
 #root {
   width: 100%;
+  background: #99bdb24a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 html {
   min-height: 100%;
@@ -23,7 +27,7 @@ body {
   line-height: 1.25;
   min-height: 100%;
   width: 100%;
-  max-width: 768px;
+  margin: 0;
   overflow-x: hidden;
   display: flex;
   justify-content: center;

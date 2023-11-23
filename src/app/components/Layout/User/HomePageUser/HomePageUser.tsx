@@ -3,17 +3,14 @@ import './HomePageUser.scss';
 import { IonIcon } from '@ionic/react';
 import { chevronDownOutline, reloadOutline, arrowForwardCircleOutline } from 'ionicons/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getDisplayStatus,
-  getPopUpStatus,
-  setDisplay,
-  setPopUpOff,
-} from 'utils/@reduxjs/popUpSlice';
+import { getPopUpStatus, setPopUpOff } from 'utils/@reduxjs/popUpSlice';
 import Map from '../../Map/Map';
+import { useHistory } from 'react-router-dom';
+import { Epath } from 'app/routes/routesConfig';
 const HomePageUser: React.FC = () => {
   const dispatch = useDispatch();
   const checkPopUp = useSelector(getPopUpStatus);
-  // const key = 'AIzaSyDWTx7bREpM5B6JKdbzOvMW-RRlhkukmVE';
+  const history = useHistory();
   interface Coords {
     lat: number;
     lng: number;
@@ -27,7 +24,7 @@ const HomePageUser: React.FC = () => {
   return (
     <div className="HomePageUser">
       <div className=" your-location">
-        <div className="tittle">
+        <div className="title">
           Your current location
           <button>
             <IonIcon icon={chevronDownOutline} />
@@ -38,7 +35,8 @@ const HomePageUser: React.FC = () => {
       <div className="horizontal-line"></div>
       <div className="container">
         <div className="logo-map">
-          <Map coords={coords} />
+          {/* <Map coords={coords} /> */}
+          <img src="/map.png" alt="" />
         </div>
         <div className="previous-location">
           <span>Previous locations :</span>
@@ -119,7 +117,7 @@ const HomePageUser: React.FC = () => {
                 <div>
                   <input placeholder="Where are we going ?"></input>
                   <button
-                    onClick={() => dispatch(setDisplay('DriverAvailable'))}
+                    onClick={() => history.push(Epath.homePageSecond)}
                     className="arrow-forward"
                   >
                     <svg

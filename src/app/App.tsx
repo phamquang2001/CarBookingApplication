@@ -10,6 +10,7 @@ import './styles/base.scss';
 import './styles/elements.scss';
 import './styles/typography.scss';
 import './styles/dependencies/index.scss';
+import './styles/app.scss';
 import { RootState } from 'types/RootState';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

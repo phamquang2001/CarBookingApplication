@@ -5,8 +5,10 @@ import { RootStateKeyType } from '../types/injector-typings';
 import {
   removeRefreshToken,
   removeToken,
+  removeUser,
   saveRefreshToken,
   saveToken,
+  saveUser,
 } from 'app/helpers/localStorage';
 import { axiosClient } from 'app/axios/axiosClient';
 interface dataLogin {
@@ -34,11 +36,13 @@ const logInSlice = createSlice({
         // state.account.refresh_token = action.payload.refresh_token;
         saveRefreshToken(action.payload.refreshToken);
         saveToken(action.payload.accessToken);
+        saveUser(action.payload.user)
         state.authenticated = true;
       })
       .addCase(fetchAPILogin.rejected, (state, action: any) => {
         state.authenticated = false;
         removeToken();
+        removeUser();
         removeRefreshToken();
       });
   },

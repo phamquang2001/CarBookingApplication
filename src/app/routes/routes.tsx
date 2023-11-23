@@ -111,7 +111,7 @@ export const routes = [
       {
         exact: true,
         path: Epath.homePageThird,
-        component: lazy(() => import('../components/Layout/User/DonateUser/DonateUser')),
+        component: lazy(() => import('../components/Layout/User/CarBookingHistory/CarHistory')),
       },
       {
         exact: true,

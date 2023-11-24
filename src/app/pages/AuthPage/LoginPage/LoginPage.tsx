@@ -32,8 +32,8 @@ const LoginPage: React.FC = () => {
     toast.success('Success');
     history.push(Epath.homePageFirst);
   };
-  const onLoginFailed = () => {
-    toast.error('Invalid Input');
+  const onLoginFailed = (e: any) => {
+    toast.error(e);
   };
   const handleSubmit = async () => {
     dispatch(fetchAPILogin({ payload: data, onLoginFailed, onLoginSuccess }));

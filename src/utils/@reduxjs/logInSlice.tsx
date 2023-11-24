@@ -14,7 +14,7 @@ import { axiosClient } from 'app/axios/axiosClient';
 interface dataLogin {
   payload: { username: string; password: string };
   onLoginSuccess: () => void;
-  onLoginFailed: () => void;
+  onLoginFailed: (e: any) => void;
 }
 
 const initialState = {
@@ -36,7 +36,7 @@ const logInSlice = createSlice({
         // state.account.refresh_token = action.payload.refresh_token;
         saveRefreshToken(action.payload.refreshToken);
         saveToken(action.payload.accessToken);
-        saveUser(action.payload.user)
+        saveUser(action.payload.user);
         state.authenticated = true;
       })
       .addCase(fetchAPILogin.rejected, (state, action: any) => {
@@ -53,10 +53,11 @@ export const fetchAPILogin = createAsyncThunk(
     try {
       const response = await axiosClient.post(`${authApi}/api/v2/users/login`, data.payload);
       data.onLoginSuccess();
-      console.log(response.data)
+      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      data.onLoginFailed();
+      console.log(error.response.data.message);
+      data.onLoginFailed(error.response.data.message);
       return rejectWithValue(error?.response?.data);
     }
   },

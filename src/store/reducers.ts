@@ -4,7 +4,7 @@
 
 import { combineReducers } from '@reduxjs/toolkit';
 import detailBookSlice from 'utils/@reduxjs/detailBookSlice';
-import historyBookSlice from 'utils/@reduxjs/historyBookSlice';
+import waitingBookSlice from 'utils/@reduxjs/historyBookSlice';
 import listCarSlice from 'utils/@reduxjs/listCarSlice';
 import logInSlice from 'utils/@reduxjs/logInSlice';
 import popUpSlice from 'utils/@reduxjs/popUpSlice';
@@ -17,7 +17,7 @@ export const rootReducers = {
   auth: logInSlice,
   popUp: popUpSlice,
   listCar: listCarSlice,
-  historyBook: historyBookSlice,
+  waitingBook: waitingBookSlice,
   detailBook: detailBookSlice,
 };
 

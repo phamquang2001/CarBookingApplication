@@ -1,7 +1,6 @@
 :root {
   /* apply to global Html document */
   --clr: #4f5053;
-  
 }
 
 .navigation {
@@ -45,11 +44,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  align-items: center;
   font-size: 1.5em;
   text-align: center;
   transition: 0.5s;
   color: var(--clr);
+  svg {
+    height: 2rem;
+    width: 2rem;
+  }
 }
 .btn-plus a .icon {
   // transform: translateY(-32px);

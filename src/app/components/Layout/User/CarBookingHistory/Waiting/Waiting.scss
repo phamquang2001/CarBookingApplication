@@ -1,6 +1,7 @@
 .scroll-list-car {
   max-height: 520px;
   overflow: auto;
+  width: 100%;
 }
 
 .search-car {
@@ -35,11 +36,11 @@
   border-radius: 8px;
   background: var(--White, #fff);
   box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.25);
-  .img-car {
+  .img-car-history {
     overflow: hidden;
     border-radius: 16px;
     max-width: 40%;
-    height: 100%;
+    height: 110px;
     img {
       border-radius: 16px;
       width: 100%;
@@ -68,9 +69,9 @@
     }
   }
   .more-inf {
-    position: absolute;
-    right: 20px;
-    top: 10px;
+    // position: absolute;
+    // right: 20px;
+    // top: 10px;
     text-decoration: none;
     color: var(--Primary, #047d30);
     font-family: Nunito;

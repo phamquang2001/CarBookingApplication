@@ -6,13 +6,13 @@
   align-items: center;
   // justify-content: center;
   flex-direction: column;
-  padding: 50px 0;
+  // padding: 20px 0;
   .container-info-user {
     width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    padding-top: 20px;
     .profile {
       display: flex;
       flex-direction: column;
@@ -26,11 +26,15 @@
         line-height: normal;
       }
       .image-user {
+        object-fit: contain;
+        width: 140px;
+        height: 140px;
+        overflow: hidden;
+        border: 2px solid #5470f2;
+        border-radius: 50%;
         img {
-          border-radius: 50%;
-          width: 100px;
-          height: 100px;
-          border: 2px solid #5470f2;
+          width: 100%;
+          height: 100%;
         }
       }
       .phone-number-user {
@@ -89,7 +93,7 @@
           right: 20px;
           svg {
             width: 20px;
-            }
+          }
         }
       }
     }

@@ -16,19 +16,26 @@ const detailBookSlice = createSlice({
       state.show = true;
     },
     setShowOff: (state) => {
-        state.show = false;
-      },
+      state.show = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchDetailBook.fulfilled, (state, action: any) => {
       state.detailBook = action.payload.data;
     });
+    builder.addCase(fetchDetailBook.rejected, (state) => {
+      state.detailBook = '';
+    });
   },
 });
 
 export const fetchDetailBook = createAsyncThunk('/fetch-historyBook', async (id_booking: any) => {
-  const data = await getDetailBooking(id_booking);
-  return data;
+  try {
+    const data = await getDetailBooking(id_booking);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 });
 export const { setShowOn, setShowOff } = detailBookSlice.actions;
 

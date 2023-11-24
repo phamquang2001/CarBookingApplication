@@ -4,6 +4,7 @@ import ReasonCancel from 'app/components/Layout/Form/ReasonCancel/ReasonCancel';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListHistory } from 'utils/@reduxjs/historyBookSlice';
 import { fetchDetailBook, getShowStatus, setShowOn } from 'utils/@reduxjs/detailBookSlice';
+import FormDetail from 'app/components/Layout/Form/FormDetail/FormDetail';
 
 interface MyComponentProps {
   data?: any;
@@ -11,20 +12,26 @@ interface MyComponentProps {
   onClick?: () => void;
 }
 
-const Waiting: React.FC<MyComponentProps> = ({ select }) => {
+const Waiting: React.FC<MyComponentProps> = (props: any) => {
+  const { select, data } = props;
   const [show, setShow] = useState(false);
   const [id_booking, setID_Booking] = useState('');
+  // const [showWaiting, setShowWaiting] = useState(false);
   const dispatch = useDispatch();
-  const data = useSelector(getListHistory);
+  const showDetail = useSelector(getShowStatus);
+  const [dataWaiting, setDataWaiting] = useState<any[]>([]);
+  // const data = useSelector(getListHistory);
   const handleDelete = (e: any) => {
-    console.log(e);
     setID_Booking(e.id_booking);
     setShow(true);
   };
-  const handleShowDetail = (id_booking: any) => {
-    dispatch(fetchDetailBook(id_booking));
+  const handleShowDetail = (e: any) => {
+    // dispatch(fetchDetailBook(e?.id_booking));
     dispatch(setShowOn());
+    // setShowWaiting(true);
+    setDataWaiting(e);
   };
+  console.log(dataWaiting);
   return (
     <div
       style={{
@@ -34,7 +41,7 @@ const Waiting: React.FC<MyComponentProps> = ({ select }) => {
         flexDirection: 'column',
       }}
     >
-      {show ? (
+      {/* {show ? (
         <ReasonCancel
           setShow={setShow}
           title={'Cancel car booking request'}
@@ -43,7 +50,7 @@ const Waiting: React.FC<MyComponentProps> = ({ select }) => {
         />
       ) : (
         ''
-      )}
+      )} */}
       <div className="search-car">
         <button className="btn-search">
           <img src="/Search.png" alt="" />
@@ -52,12 +59,14 @@ const Waiting: React.FC<MyComponentProps> = ({ select }) => {
       </div>
 
       <div className="scroll-list-car">
+        {showDetail ? <FormDetail select={select} data={dataWaiting} /> : ''}
+
         {data?.map((e: any) => {
           return (
             <div>
               {select === 1 && (
-                <div className="list-car-status">
-                  <div className="img-car">
+                <div onClick={() => handleShowDetail(e)} className="list-car-status">
+                  <div className="img-car-history">
                     <img
                       src={
                         e?.driver?.vehicle?.image_vehicle ||
@@ -68,13 +77,17 @@ const Waiting: React.FC<MyComponentProps> = ({ select }) => {
                   </div>
                   <div className="inf-car-status">
                     <span>{e?.driver?.fullname}</span>
-                    <span>{e?.date_start.substring(0, 10)}</span>
+                    <span>
+                      {(e?.date_start &&
+                        new Date(e.date_start).toLocaleDateString('en-GB', { timeZone: 'UTC' })) ||
+                        ''}
+                    </span>
                     <span>
                       {e?.time_start} - {e?.time_end}
                     </span>
                   </div>
                   <div className="icon-delete">
-                    <svg
+                    {/* <svg
                       onClick={() => handleDelete(e)}
                       xmlns="http://www.w3.org/2000/svg"
                       className="ionicon"
@@ -103,10 +116,10 @@ const Waiting: React.FC<MyComponentProps> = ({ select }) => {
                         stroke-linejoin="round"
                         stroke-width="32"
                       />
-                    </svg>
-                  </div>
-                  <div onClick={() => handleShowDetail(e.id_booking)} className="more-inf">
-                    Detail{' '}
+                    </svg> */}
+                    <div className="more-inf">
+                      Detail{' '}
+                    </div>
                   </div>
                 </div>
               )}

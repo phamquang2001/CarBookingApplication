@@ -13,34 +13,33 @@ function ReasonCancel(props: any) {
     setShow(false);
     dispatch(fetchListBook());
     dispatch(setShowOff());
-
   };
   return (
-      <div className="form-reason">
-        <div className="container-reason">
-          <div className="title-reason">{title}</div>
-          <div className="content">
-            <span>Please enter the reason for canceling the booking</span>
-            <label>
-              {label}
-              <input
-                onChange={(e) => setReason(e.target.value)}
-                autoFocus
-                type="text"
-                placeholder="Enter your reason"
-              />
-            </label>
-          </div>
-          <div className="controller">
-            <button onClick={() => setShow(false)} className="btn-cancel">
-              Cancel
-            </button>
-            <button onClick={() => handleDelete()} className="btn-accept">
-              Accept
-            </button>
-          </div>
+    <div className="form-reason">
+      <div className="container-reason">
+        <div className="title-reason">{title}</div>
+        <div className="content">
+          <span>Please enter the reason for canceling the booking</span>
+          <label>
+            {label}
+            <input
+              onChange={(e) => setReason(e.target.value)}
+              autoFocus
+              type="text"
+              placeholder="Enter your reason"
+            />
+          </label>
+        </div>
+        <div className="controller">
+          <button onClick={() => setShow(false)} className="btn-cancel">
+            Cancel
+          </button>
+          <button onClick={() => handleDelete()} className="btn-accept">
+            Accept
+          </button>
         </div>
       </div>
+    </div>
   );
 }
 

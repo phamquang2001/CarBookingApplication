@@ -12,7 +12,7 @@ export const fetchApiBookCar = async (data: any, id: any) => {
 export const getAPIUser = async (id: any) => {
   return await axiosClient.get(`${authApi}/api/v2/users?id=${id}`);
 };
-export const fetchApiHistoryBook = async () => {
+export const fetchApiWaitingBook = async () => {
   return await axiosClient.get(`${authApi}/api/v2/booking-details/listWaitAccess`);
 };
 export const updateInfoUser = async (data: { fullname: any }) => {
@@ -35,4 +35,8 @@ export const getDetailBooking = async (id_booking: any) => {
   return await axiosClient.get(
     `${authApi}/api/v2/booking-details/detail/booking?id_booking=${id_booking}`,
   );
+};
+
+export const getListCancel = async () => {
+  return await axiosClient.get(`${authApi}/api/v2/reason/list/CancelPb`);
 };

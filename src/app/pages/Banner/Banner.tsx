@@ -9,16 +9,15 @@ type Props = {};
 const Banner = (props: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    // Simulate loading data or component
     setTimeout(() => {
-      setIsLoading(false); // Khi dữ liệu đã load xong
-    }, 1000); // Thay đổi thời gian tùy ý
+      setIsLoading(false); 
+    }, 1000);
   }, []);
   const isAuthenticated = false;
   return (
     <div className="container">
       {isLoading && <Splash />}
-      {isAuthenticated && <HomePage />}
+      {/* {isAuthenticated && <HomePage />} */}
       {!isLoading && !isAuthenticated && (
         <Suspense fallback={<Splash />}>
           <div className="Banner">

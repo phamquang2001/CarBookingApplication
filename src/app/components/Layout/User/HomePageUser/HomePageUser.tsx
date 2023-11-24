@@ -68,11 +68,13 @@ const HomePageUser: React.FC = () => {
           </ul>
         </div>
         <div className={`pop-up ${checkPopUp ? '' : 'hide-sidebar'}`}>
-          <div className="horizontal-line"></div>
+          <div onClick={() => dispatch(setPopUpOff())} className="horizontal-line"></div>
           <div className="title-pop-up">
-            <button onClick={() => dispatch(setPopUpOff())} className="btn-close-pop-up">
+            {/* <button 
+            onClick={() => dispatch(setPopUpOff())} 
+            className="btn-close-pop-up">
               Close
-            </button>
+            </button> */}
             <span>Going to</span>
           </div>
           <div className="content-going">

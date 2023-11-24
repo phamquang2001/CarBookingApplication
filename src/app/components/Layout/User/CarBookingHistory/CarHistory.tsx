@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import './CarHistory.scss';
 import Waiting from './Waiting/Waiting';
-import { fetchApiHistoryBook } from 'app/API/api';
+import { fetchApiWaitingBook, getListCancel } from 'app/API/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchListBook, getListHistory } from 'utils/@reduxjs/historyBookSlice';
 import SuspenseFallback from 'app/components/Common/SuspenseFallback/SuspenseFallback';
 import FormDetail from '../../Form/FormDetail/FormDetail';
 import { getShowStatus } from 'utils/@reduxjs/detailBookSlice';
+import CancelBook from './CancelBook/CancelBook';
 const CarHistory: React.FC = () => {
   const dispatch = useDispatch();
   const [select, setSelect] = useState(1);
-  const showDetail = useSelector(getShowStatus);
   const data = useSelector(getListHistory);
+  const [dataCancel, setDataCancel] = useState<any[]>([]);
 
+  const fetchDataCancel = async () => {
+    const res: any = await getListCancel();
+    setDataCancel(res.data);
+  };
+  useEffect(() => {
+    fetchDataCancel();
+  }, []);
   useEffect(() => {
     dispatch(fetchListBook());
-  }, [data]);
+  }, []);
+  // console.log(dataCancel);
   return (
     <div className="CarHistory">
-      {showDetail ? <FormDetail /> : ''}
       <div className="container-history">
         <div className="title">History Book Car</div>
         <div className="status-booking-car">
@@ -48,7 +56,15 @@ const CarHistory: React.FC = () => {
           </button>
         </div>
         <div style={{ width: '90%' }}>
-          {data.length > 0 ? <Waiting select={select} /> : <SuspenseFallback />}
+          {select === 1 &&
+            (data.length > 0 ? (
+              <Waiting select={select} data={data} />
+            ) : (
+              'Cant find the vehicle you are looking for...'
+            ))}
+          {dataCancel.length > 0 && select === 2 && (
+            <CancelBook select={select} data={dataCancel} />
+          )}
         </div>
       </div>
     </div>

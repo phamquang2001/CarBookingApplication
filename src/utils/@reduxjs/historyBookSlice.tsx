@@ -1,28 +1,27 @@
 import { createAsyncThunk, isRejectedWithValue } from '@reduxjs/toolkit';
 import { createSlice } from './toolkit';
 import { RootStateKeyType } from '../types/injector-typings';
-import { fetchApiHistoryBook } from 'app/API/api';
+import { fetchApiWaitingBook } from 'app/API/api';
+
 
 const initialState = {
-  listHistory: {},
+  waitingBook: {},
 };
 
-const historyBookSlice = createSlice({
-  name: 'historyBook' as RootStateKeyType,
+const waitingBookSlice = createSlice({
+  name: 'waitingBook' as RootStateKeyType,
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchListBook.fulfilled, (state, action: any) => {
-      state.listHistory = action.payload.data;
+      state.waitingBook = action.payload.data;
     });
-
   },
 });
 export const fetchListBook = createAsyncThunk('/fetch-historyBook', async () => {
-  const data = await fetchApiHistoryBook();
+  const data = await fetchApiWaitingBook();
   return data;
 });
 
-
-export const getListHistory = (state: any) => state.historyBook?.listHistory;
-export default historyBookSlice.reducer;
+export const getListHistory = (state: any) => state.waitingBook?.waitingBook;
+export default waitingBookSlice.reducer;
